@@ -16,4 +16,14 @@ function getComputerChoice(){
     return computerChoice;
 }
 
+
+// function that get human choice, return one of the valid choices based on user inputs
 console.log(getComputerChoice());
+
+// global variables that keep track of score
+
+
+// logic to play a single round
+
+
+//logic to play entire game
