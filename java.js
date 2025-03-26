@@ -68,7 +68,13 @@ function playRound (humanChoice, computerChoice){
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 playRound(humanSelection,computerSelection);
-console.log(computerScore)
-console.log(humanScore)
+
+// log score
+//console.log(computerScore)
+//console.log(humanScore)
 
 //logic to play entire game
+
+function playgame(){
+    // logic to play game
+}
