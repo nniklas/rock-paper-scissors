@@ -34,9 +34,13 @@ function getHumanChoice(){
     }
     return humanChoice
 }
-console.log(getHumanChoice());
-// global variables that keep track of score
 
+// log humanchoice
+console.log(getHumanChoice());
+
+// global variables that keep track of score
+let humanScore = 0;
+let computerScore = 0;
 
 // logic to play a single round
 
