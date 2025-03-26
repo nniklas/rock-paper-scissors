@@ -16,10 +16,16 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-
-// function that get human choice, return one of the valid choices based on user inputs
+// log computer choice
 console.log(getComputerChoice());
 
+// function that get human choice, return one of the valid choices based on user inputs
+function getHumanChoice(){
+    let message = "Choose rock, paper or scissors, type in your answer using numbers only. Rock=1, paper = 2, scissors = 3";
+    let humanInput = prompt(message);
+    return humanInput
+}
+console.log(getHumanChoice());
 // global variables that keep track of score
 
 
