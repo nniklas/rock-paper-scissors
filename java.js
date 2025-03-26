@@ -40,22 +40,64 @@ function getHumanChoice(){
 
   
 
-// logic to play a single round
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection,computerSelection);
+// logic to play a 5 rounds round
+
+
 
 // log score
 //console.log(computerScore)
 //console.log(humanScore)
 
 //logic to play entire game
+let humanScore = 0;
+let computerScore = 0;
+let whoWon = "";
 
-function playgame(){
-    // logic to play game
+whoWon = playGame();
+if (whoWon){
+    humanScore += 1;
+} else if (whoWon == false){
+    computerScore += 1;
+} 
+whoWon = "";
+
+whoWon = playGame();
+if (whoWon){
+    humanScore += 1;
+} else if (whoWon == false){
+    computerScore += 1;
+} 
+whoWon = "";
+whoWon = playGame();
+if (whoWon){
+    humanScore += 1;
+} else if (whoWon == false){
+    computerScore += 1;
+} 
+whoWon = "";
+whoWon = playGame();
+if (whoWon){
+    humanScore += 1;
+} else if (whoWon == false){
+    computerScore += 1;
+} 
+whoWon = "";
+whoWon = playGame();
+if (whoWon){
+    humanScore += 1;
+} else if (whoWon == false){
+    computerScore += 1;
+} 
+whoWon = "";
+console.log(`Final score is human: ${humanScore} points and computer ${computerScore}!`)
+
+
+
+function playGame(){
 // variables that keep track of score
 let humanScore = 0;
 let computerScore = 0;
+let humanWin = "";
 
 // function that takes the human and computer player choices as arguments, 
 // plays a single round, increments the round winner’s score and logs a winner announcement
@@ -77,4 +119,14 @@ function playRound (humanChoice, computerChoice){
         computerScore += 1;
     }
 }    
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+playRound(humanSelection,computerSelection);
+
+if (humanScore == 1){
+    humanWin = true;
+} else if (computerScore == 1) {
+    humanWin = false;
+} 
+return humanWin;
 }
