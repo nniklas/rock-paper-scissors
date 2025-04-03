@@ -35,100 +35,67 @@ function getHumanChoice(){
     return humanSelection
 }
 
-// log humanchoice
-//console.log(getHumanChoice());
-
-  
-
-// logic to play a 5 rounds round
-
-
-
-// log score
-//console.log(computerScore)
-//console.log(humanScore)
-
-//logic to play entire game
+// define score variables
 let humanScore = 0;
 let computerScore = 0;
-let whoWon = "";
-
-whoWon = playGame();
-if (whoWon){
-    humanScore += 1;
-} else if (whoWon == false){
-    computerScore += 1;
-} 
-whoWon = "";
-
-whoWon = playGame();
-if (whoWon){
-    humanScore += 1;
-} else if (whoWon == false){
-    computerScore += 1;
-} 
-whoWon = "";
-whoWon = playGame();
-if (whoWon){
-    humanScore += 1;
-} else if (whoWon == false){
-    computerScore += 1;
-} 
-whoWon = "";
-whoWon = playGame();
-if (whoWon){
-    humanScore += 1;
-} else if (whoWon == false){
-    computerScore += 1;
-} 
-whoWon = "";
-whoWon = playGame();
-if (whoWon){
-    humanScore += 1;
-} else if (whoWon == false){
-    computerScore += 1;
-} 
-whoWon = "";
-console.log(`Final score is human: ${humanScore} points and computer ${computerScore}!`)
-
-
-
-function playGame(){
-// variables that keep track of score
-let humanScore = 0;
-let computerScore = 0;
-let humanWin = "poo";
-
+let roundsplayed = 0;
+let maxrounds = 5;
 // function that takes the human and computer player choices as arguments, 
 // plays a single round, increments the round winner’s score and logs a winner announcement
 
 function playRound (humanChoice, computerChoice){
     if (humanChoice == "rock" && computerChoice == "scissors"){
-        console.log("You win, rock beats scissors!")
+        roundDiv.textContent = "You win, rock beats scissors!";
         humanScore += 1;
     } else if (humanChoice == "scissors" && computerChoice == "paper"){
-        console.log("You win, scissors beats paper!")
+        roundDiv.textContent = "You win, scissors beats paper!";
         humanScore += 1;
     } else if (humanChoice == "paper" && computerChoice == "rock"){
-        console.log("You win, paper beats rock!")
+        roundDiv.textContent = "You win, paper beats rock!";
         humanScore += 1;
     } else if (humanChoice == computerChoice){
-        console.log(`Equal, you both picked ${computerChoice} the same thing!`)
+        roundDiv.textContent = `Equal, you both picked ${computerChoice} the same thing!`;
     } else {
-        console.log(`You lose, ${computerChoice} beats ${humanChoice}!`)
+        roundDiv.textContent = `You lose, ${computerChoice} beats ${humanChoice}!`;
         computerScore += 1;
     }
+    roundsplayed += 1;
 }    
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
-playRound(humanSelection,computerSelection);
 
-if (humanScore == 1){
-    humanWin = true;
-} else if (computerScore == 1) {
-    humanWin = false;
-} 
-// log score inside function
-//console.log(`inside playRound we have humanScore = ${humanScore} and computerScore = ${computerScore} `)
-return humanWin;
-}
+// Eventlistener addition in later exercise
+
+// buttons is a node list, much like array but not completely.
+const buttons = document.querySelectorAll("button");
+
+// .forEach loops through each button
+buttons.forEach((button) => {
+    // for each button we add click listener
+    button.addEventListener("click", () => {
+        playRound(button.id, getComputerChoice());
+        displayCurrentScore();
+    });
+});
+
+console.log(`Final score is human: ${humanScore} points and computer ${computerScore}!`)
+
+// Create div to display score
+const container = document.querySelector("#container")
+const resultDiv = document.createElement("div");
+
+// div to display round result
+const roundDiv = document.createElement("div");
+container.appendChild(roundDiv)
+container.appendChild(resultDiv)
+
+
+function displayCurrentScore(){
+    if (roundsplayed < maxrounds) {
+        resultDiv.textContent = `Current score is human: ${humanScore} points and computer ${computerScore}!`;
+    } else if (roundsplayed == maxrounds){
+        resultDiv.textContent = `Final score is human: ${humanScore} points and computer ${computerScore}!`;
+        roundsplayed = 0;
+        humanScore = 0;
+        computerScore = 0;
+    } 
+};
+
